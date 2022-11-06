@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/* Font Family */
+$font-stack: 'Poppins', sans-serif;
+
+/* Font Weights */
+
+$fw-bold: 700;
+$fw-reg: 400;
+$fw-mbold: 500;
+
+/* Font Colours */
+$fc-offwhite: #fafafa;
+$fc-danger: rgb(166, 23, 23);
+$fc-success: rgb(34, 106, 34);
+$fc-warning: rgb(238, 238, 46);
+
+/* Background Colours */
+$bg-blue: rgb(65, 81, 145);
+$bg-green: rgb(35, 136, 24);
+$bg-lightgreen: rgb(52, 177, 38);
+$bg-lightgray: rgb(234, 234, 234);
+
+
+
+*,
+:before,
+:after { 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+   height: 100%
+}
+
+
+h1, input, button {
+    font-family: $font-stack !important;
+}
+
+h1 {
+    color: $fc-offwhite;
+    font-size: 2.375rem;
+    font-weight: $fw-bold !important;
+}
+
+/* Page Contents */
+
+#main-container {
+    height: 100vh;
+
+}
+
+#rect-1 {
+    min-height: calc(100vh - 50%);
+    background-color: rgb(65, 81, 145);
+    width: 100%;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#header-wrapper--search {
+    padding: 2.975rem;
+    position: relative;
+    z-index: 2;
+    #searchbar-wrapper {
+
+        input {
+            width: 100%;
+            padding: 0.675rem;
+            font-size: 1.1875rem;
+        }
+
+        button {
+            width: 100%;
+            background-color: $bg-green;
+            outline: none;
+            border: none;
+            padding: 0.3875rem;
+            margin-top: 0.75rem;
+            color: $fc-offwhite;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1875rem;
+        }
+
+        button:hover {
+            background-color: $bg-lightgreen;
+        }
+    }
+}
