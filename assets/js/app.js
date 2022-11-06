@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 postcodeInput: '',
                 crimeStats: null,
                 nearestPostcodes: null,
-                planningPerms: null
+                planningPerms: null,
+                firstSearch: false
             }
         },
         methods: {
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.planningPerms = planningPerms;
                     this.nearestPostcodes = nearestPostcodes;
 
+                    this.firstSearch = true;
                 }
             }
         },

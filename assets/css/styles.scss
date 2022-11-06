@@ -51,7 +51,11 @@ h1 {
 
 #main-container {
     height: 100vh;
-
+    background: url('../../images/vecteezy_aesthetic-wave-border-vector-illustration_13316708.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 100%;
 }
 
 #rect-1 {
@@ -66,6 +70,7 @@ h1 {
 }
 
 #header-wrapper--search {
+    height: 100%;
     padding: 2.975rem;
     position: relative;
     z-index: 2;
@@ -95,4 +100,11 @@ h1 {
             background-color: $bg-lightgreen;
         }
     }
+}
+
+.seperate-sections--md {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }

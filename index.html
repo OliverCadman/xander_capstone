@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,53 +10,67 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Postcode Inspector</title>
 </head>
+
 <body>
     <main>
         <div id="app">
             <section id="main-container">
                 <div id="rect-1">
                 </div>
-                    <div id="header-wrapper--search">
-                        <div class="container-fluid">
-                            <div class="row d-flex justify-content-between w-100">
-                                <div class="col-12 col-md-4">
-                                    <h1>Postcode Explorer</h1>
-                                    <div id="searchbar-wrapper">
-                                        <form @submit.prevent="getPostcodeData">
-                                            <input v-model="postcodeInput" @input="onInput" placeholder="SE8 4SD">
-                                            <button type="submit">Search</button>
-                                        </form>
-                                    </div>
+                <!-- Search Bar-->
+                <div id="header-wrapper--search">
+                    <div class="container-fluid seperate-sections--md">
+                        <div class="row d-flex justify-content-between w-100">
+                            <div class="col-12 col-md-4">
+                                <h1>Postcode Explorer</h1>
+                                <div id="searchbar-wrapper">
+                                    <form @submit.prevent="getPostcodeData">
+                                        <input v-model="postcodeInput" @input="onInput" placeholder="SE8 4SD">
+                                        <button type="submit">Search</button>
+                                    </form>
                                 </div>
                             </div>
+                        </div>
+                        <!-- Results -->
+                        <div v-if="firstSearch">
                             <div class="row">
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-4 result-wrapper">
                                     <article>
                                         <div v-for="item in crimeStats">
                                             {{ item.category }}
                                         </div>
                                     </article>
                                 </div>
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-4 result-wrapper">
                                     <div v-for="item in planningPerms">
                                         {{ item.application_type }}
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-4 result-wrapper">
                                     <div v-for="item in nearestPostcodes">
                                         {{ item.postcode }}
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div v-else>
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <img src="./assets/images/kisspng-animated-film-powerpoint-animation-magnifying-glas-detective-hat-5b1fcf6b123aa3.6240550815288113710747.png"
+                                        alt="Man with magnifying glass" width="200" height="250">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-             
+                </div>
+
             </section>
 
 
-        </div> 
+        </div>
     </main>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./assets/js/app.js"></script>
 </body>
+
 </html>
