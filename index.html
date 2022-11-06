@@ -32,24 +32,41 @@
                             </div>
                         </div>
                         <!-- Results -->
-                        <div v-if="firstSearch">
-                            <div class="row">
-                                <div class="col-12 col-md-4 result-wrapper">
+                        <div v-if="firstSearch" class="h-50">
+                            <div class="row results-row justify-content-around h-100">
+                                <div class="col-12 col-md-3 result-container">
                                     <article>
-                                        <div v-for="item in crimeStats">
-                                            {{ item.category }}
+                                        <h3 class="text-center">Crime Stats</h3>
+                                        <div class="result-wrapper">
+                                            <div v-for="item in crimeStats" class="result">
+                                                <p>{{ item.category }}</p>
+                                                <p>{{ item.location }}</p>
+                                                <p>{{ item.outcome_status }}</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </article>
+                                </div>
+                                <div class="col-12 col-md-3 result-container">
+                                    <article>
+                                        <h3 class="text-center">Planning Permissions</h3>
+                                        <div class="result-wrapper">
+                                            <div v-for="item in planningPerms" class="result">
+                                                <p>{{ item.application_type }}</p>
+                                                <a :href="item.url">Inspect plan</a>
+                                            </div>
                                         </div>
                                     </article>
                                 </div>
-                                <div class="col-12 col-md-4 result-wrapper">
-                                    <div v-for="item in planningPerms">
-                                        {{ item.application_type }}
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4 result-wrapper">
-                                    <div v-for="item in nearestPostcodes">
-                                        {{ item.postcode }}
-                                    </div>
+                                <div class="col-12 col-md-3 result-container">
+                                    <article>
+                                        <h3 class="text-center">Nearest Postcodes</h3>
+                                        <div class="result-wrapper">
+                                            <div v-for="item in nearestPostcodes" class="result">
+                                                <p>{{ item.postcode }}</p>
+                                            </div>
+                                        </div>
+                                    </article>
                                 </div>
                             </div>
                         </div>

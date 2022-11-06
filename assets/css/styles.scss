@@ -62,7 +62,7 @@ h1 {
     min-height: calc(100vh - 50%);
     background-color: rgb(65, 81, 145);
     width: 100%;
-    padding: 1rem;
+    padding: .1rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -71,7 +71,7 @@ h1 {
 
 #header-wrapper--search {
     height: 100%;
-    padding: 2.975rem;
+    padding: .975rem;
     position: relative;
     z-index: 2;
     #searchbar-wrapper {
@@ -105,6 +105,39 @@ h1 {
 .seperate-sections--md {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 100%;
+}
+
+.result-container {
+    background-color: white;
+    height: 100%;
+    padding: 1.275rem 0;
+
+    article {
+        height: 100%;
+
+        h3 {
+            padding: 1rem;
+        }
+    }
+}
+
+.result-wrapper {
+    overflow: auto;
+    height: 80%;
+}
+
+.result-row {
+    height: 100%;
+
+    div {
+        height: 100%;
+    }
+}
+
+.result {
+    background-color: $bg-lightgray;
+    margin: 1rem 0;
+    padding: 0.875rem 0.25rem;
 }
