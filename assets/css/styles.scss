@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@400;500;700&display=swap');
+
 
 /* Font Family */
 $font-stack: 'Poppins', sans-serif;
+$font-stack-alt: 'Montserrat', sans-serif;
 
 /* Font Weights */
 
@@ -13,13 +15,16 @@ $fw-mbold: 500;
 $fc-offwhite: #fafafa;
 $fc-danger: rgb(166, 23, 23);
 $fc-success: rgb(34, 106, 34);
-$fc-warning: rgb(238, 238, 46);
+$fc-warning: rgb(41, 31, 177);
 
 /* Background Colours */
 $bg-blue: rgb(65, 81, 145);
+$bg-darkerblue: rgb(50, 62, 113);
 $bg-green: rgb(35, 136, 24);
 $bg-lightgreen: rgb(52, 177, 38);
-$bg-lightgray: rgb(234, 234, 234);
+$bg-lightgray: rgb(245, 245, 245);
+$bg-danger: rgb(166, 23, 23);
+$bg-success: rgb(34, 106, 34);
 
 
 
@@ -36,8 +41,22 @@ html {
    height: 100%
 }
 
+hr {
+    margin-top: 0 !important; 
+    border: 0 !important;
+    opacity: 1 !important;
+    background-color: $fc-offwhite !important;
+    height: 5px;
+}
 
-h1, input, button {
+hr:not([size]) {
+    height: 3px !important;
+}
+
+
+
+
+h1, h3, input, button, a {
     font-family: $font-stack !important;
 }
 
@@ -45,6 +64,20 @@ h1 {
     color: $fc-offwhite;
     font-size: 2.375rem;
     font-weight: $fw-bold !important;
+}
+
+h3 {
+    color: $fc-offwhite;
+    font-size: 1.5rem !important;
+}
+
+i {
+    font-size: 1.25rem;
+    margin-right: .75rem;
+}
+
+a {
+    color: $fc-offwhite !important;
 }
 
 /* Page Contents */
@@ -59,7 +92,7 @@ h1 {
 }
 
 #rect-1 {
-    min-height: calc(100vh - 50%);
+    min-height: calc(100vh - 40%);
     background-color: rgb(65, 81, 145);
     width: 100%;
     padding: .1rem;
@@ -75,6 +108,8 @@ h1 {
     position: relative;
     z-index: 2;
     #searchbar-wrapper {
+
+        width: 100%;
 
         input {
             width: 100%;
@@ -102,6 +137,15 @@ h1 {
     }
 }
 
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+
 .seperate-sections--md {
     display: flex;
     flex-direction: column;
@@ -110,22 +154,24 @@ h1 {
 }
 
 .result-container {
-    background-color: white;
+    background-color: $bg-success;
     height: 100%;
     padding: 1.275rem 0;
+    border-radius: 7px;
+    -webkit-box-shadow: 10px 10px 91px -12px rgba(0,0,0,0.55);
+    -moz-box-shadow: 10px 10px 91px -12px rgba(0,0,0,0.55);
+    box-shadow: 10px 10px 91px -12px rgba(0,0,0,0.55);
 
     article {
         height: 100%;
-
-        h3 {
-            padding: 1rem;
-        }
     }
 }
 
 .result-wrapper {
     overflow: auto;
     height: 80%;
+    background-color: white;
+
 }
 
 .result-row {
@@ -133,11 +179,127 @@ h1 {
 
     div {
         height: 100%;
+        
     }
 }
 
 .result {
-    background-color: $bg-lightgray;
-    margin: 1rem 0;
+    background-color: $bg-darkerblue;
+    color: $fc-offwhite;
+    margin: 1rem;
     padding: 0.875rem 0.25rem;
+    border-radius: 7px;
+
+    p {
+        font-family: $font-stack-alt;
+    }
+
+}
+
+.result.postcode {
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    button {
+        background-color: $bg-darkerblue;
+        color: $fc-offwhite;
+        border: none;
+        padding: 1rem;
+        border-radius: 20px;
+        width: 100%;
+        transition: all 0.3s ease;
+        font-family: $font-stack-alt;
+    }
+
+    button:hover {
+        background-color: $bg-blue;
+    }
+}
+
+.result.postcode:hover {
+    background-color: $bg-blue;
+}
+
+.map-container {
+    height: 100%;
+}
+
+#map {
+    height: 55%;
+    margin: 1rem 0 1rem 0;
+}
+
+.bg-danger {
+    background-color: $bg-danger;
+}
+
+.bg-ok {
+    background-color: $bg-success !important;
+}
+
+.result-header-wrapper {
+    margin-top: 2.75rem;
+
+}
+
+.result--postcode,
+.result--constituency {
+    font-family: $font-stack !important;
+    color: #fafafa;
+}
+
+.result--postcode {
+    font-size: 3rem;
+}
+
+.result--constituency {
+    font-size: 1.875rem;
+}
+
+.no-results--container {
+    height: 100%;
+    display: grid;
+    place-items: center;
+
+    p {
+        font-family: $font-stack;
+        font-size: 1.75rem;
+    }
+}
+
+.result--postcode.loading:after {
+    content: "\2026";
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4, end) 1300ms infinite;
+    animation: ellipsis steps(4, end) 1300ms infinite;
+    width: 0px;
+}
+
+
+@keyframes ellipsis {
+    to {
+        width: .75em;
+    }
+}
+
+@-webkit-keyframes ellipsis {
+    to {
+        width: .75em;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #map {
+        display: block;
+    }
+
+    #header-wrapper--search {
+
+    #searchbar-wrapper {
+        width: 50%;
+    }
+    }
 }
