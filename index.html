@@ -161,9 +161,11 @@
                                 <p v-if="planningPermItem" class="item-content">{{ planningPermItem.address}}</p>
                                  <p class="item-header">Status</p>
                                 <p v-if="planningPermItem" class="item-content">{{ planningPermItem.status }}</p>
-                                <a v-if="planningPermItem" :href="planningPermItem.url" class="btn btn-success" target="_blank">Inspect plan</a>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-foote d-flex justify-content-between me-2 mb-2 ms-2">
+                                <a v-if="planningPermItem" :href="planningPermItem.url" class="btn btn-success"
+                                       target="_blank">Inspect
+                                       plan</a>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>

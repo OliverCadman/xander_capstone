@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 this.map.setZoom(15);
 
-                new google.maps.Marker({
+                const marker = new google.maps.Marker({
                   position: {
                     lat: this.latitude,
                     lng: this.longitude,
