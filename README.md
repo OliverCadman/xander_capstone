@@ -21,7 +21,7 @@ The Google Maps API was integrated into the project, to allow the user some visu
 
 ## Deployment
 
-Since this is a static project, Amazon AWS S3 was used to handle the files and dependencies needed. Continuous Integration is leveraged through used AWS Code Pipeline, connected to this Github repository.
+Since this is a static project, Amazon AWS S3 was used to handle the files and dependencies needed. Continuous Integration is leveraged through use of AWS Code Pipeline, connected to this Github repository.
 
 # Database Schema
 
