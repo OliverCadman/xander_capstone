@@ -29,7 +29,7 @@
                                 <div id="searchbar-wrapper">
                                     <form ref="postcodeForm" @submit.prevent="getPostcodeData">
                                         <input v-model="postcodeInput" @input="onInput" placeholder="SE8 4SD">
-                                        <button type="submit">Search</button>
+                                        <button type="submit" class="btn">Search</button>
                                     </form>
                                 </div>
                                 <div class="row postcode-constituency"
@@ -60,20 +60,23 @@
                                 <div class="col-12 col-md-3 result-container"
                                      :class="[highCrimeRate ? 'bg-danger': 'bg-ok']">
                                     <article>
-                                        <h3 class="text-center">Crime Stats</h3>
+                                        <h3 class="text-center">{{ crimeStats.length }} Crimes Committed</h3>
                                         <hr>
                                             <div v-if="crimeStats.length > 0" class="result-wrapper">
                                                 <div v-for="item in crimeStats" class="result">
                                                     <p><i class="fa-solid fa-magnifying-glass"></i>{{ item.category }}
                                                     </p>
                                                     <p><i class="fa-solid fa-location-dot"></i>{{ item.location }}</p>
-                                                    <p v-if="item.outcome_status !== 'None' || item.outcome_status !== null">
-                                                        <i class="fa-solid fa-temperature-three-quarters"></i>
-                                                        {{ item.outcome_status }}
+                                                    <p v-if="item.outcome_status === 'None'">
+                                                        No outcome
                                                     </p>
-                                                    <p v-else>
+                                                    <p v-else-if="item.outcome_status === null">
                                                        <i class="fa-solid fa-temperature-three-quarters"></i>
                                                         No outcome
+                                                    </p>
+                                                    <p v-else>
+                                                         <i class="fa-solid fa-temperature-three-quarters"></i>
+                                                         {{ item.outcome_status }}
                                                     </p>
                                                 </div>
                                             </div>
@@ -84,14 +87,30 @@
                                 </div>
                                 <div class="col-12 col-md-3 result-container">
                                     <article>
-                                        <h3 class="text-center">Planning Permissions</h3>
+                                        <h3 class="text-center">{{ planningPerms.length }} Planning Permissions</h3>
                                         <hr>
                                         <div class="result-wrapper">
                                             <div v-if="planningPerms.length > 0">
                                                 <div v-for="item in planningPerms" class="result">
-                                                    <p>{{ item.application_type }}</p>
+                                                    <p class="truncate">{{ item.description }}</p>
                                                     <p><i class="fa-solid fa-location-dot"></i> {{ item.address }}</p>
-                                                    <a :href="item.url" target="_blank">Inspect plan</a>
+                                                    <p v-if="item.status === 'None'">
+                                                        No decision made
+                                                    </p>
+                                                    <p v-else-if="item.status === null">
+                                                        No decision made
+                                                    </p>
+                                                    <p v-else>
+                                                        <i v-if="item.status === 'Granted'" class="fa-regular fa-square-check"></i>
+                                                        <i v-else-if="item.status === 'Refused'" class="fa-solid fa-circle-xmark"></i>
+                                                        {{ item.status }}
+                                                    </p>
+                                                    <button
+                                                    type="button"
+                                                    class="btn btn-warning"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#planningPermModal"
+                                                    @click="showPlanningPermDetail(item)">Inspect plan</button>
                                                 </div>
                                             </div>
                                             <div v-else class="no-results--container">
@@ -102,7 +121,7 @@
                                 </div>
                                 <div class="col-12 col-md-3 result-container">
                                     <article>
-                                        <h3 class="text-center">Nearest Postcodes</h3>
+                                        <h3 class="text-center">{{ nearestPostcodes.length }} Postcodes Nearby</h3>
                                         <hr>
                                         <div v-if="nearestPostcodes.length > 0" class="result-wrapper">
                                             <div v-for="item in nearestPostcodes" class="result postcode">
@@ -126,7 +145,30 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Individual Planning Permission Modal -->
+                <div :planningPermItem="planningPermItem" class="modal fade" id="planningPermModal" tabindex="-1" aria-labelledby="planningPermModal"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="item-header">Description</p>
+                                <p v-if="planningPermItem" class="item-content">{{ planningPermItem.description }}</p>
+                                <p class="item-header">Address</p>
+                                <p v-if="planningPermItem" class="item-content">{{ planningPermItem.address}}</p>
+                                 <p class="item-header">Status</p>
+                                <p v-if="planningPermItem" class="item-content">{{ planningPermItem.status }}</p>
+                                <a v-if="planningPermItem" :href="planningPermItem.url" class="btn btn-success" target="_blank">Inspect plan</a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
 
@@ -136,6 +178,8 @@
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS5AJQY9QJV4F8bP7qFFztGO97N3uKrZQ">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js
+"></script>
     <script src="./assets/js/app.js"></script>
 </body>
 

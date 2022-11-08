@@ -22,6 +22,7 @@ $bg-blue: rgb(65, 81, 145);
 $bg-darkerblue: rgb(50, 62, 113);
 $bg-green: rgb(35, 136, 24);
 $bg-lightgreen: rgb(52, 177, 38);
+$bg-darkergreen: rgb(34, 118, 25);
 $bg-lightgray: rgb(245, 245, 245);
 $bg-danger: rgb(166, 23, 23);
 $bg-success: rgb(34, 106, 34);
@@ -129,10 +130,13 @@ a {
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1.1875rem;
+            -webkit-box-shadow: inset 10px 10px 84px -43px rgba(255,255,255,1);
+            -moz-box-shadow: inset 10px 10px 84px -43px rgba(255,255,255,1);
+            box-shadow: inset 10px 10px 84px -43px rgba(255,255,255,1);
         }
 
         button:hover {
-            background-color: $bg-lightgreen;
+            background-color: $bg-darkergreen;
         }
     }
 }
@@ -276,6 +280,25 @@ a {
     -webkit-animation: ellipsis steps(4, end) 1300ms infinite;
     animation: ellipsis steps(4, end) 1300ms infinite;
     width: 0px;
+}
+
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-header {
+    font-family: $font-stack;
+    font-weight: $fw-bold;
+    font-size: 2rem;
+    color: rgba(34, 180, 104, 0.698);
+}
+
+.item-content {
+    font-family: $font-stack-alt;
+    
 }
 
 

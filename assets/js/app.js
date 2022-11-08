@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 postcode: '',
                 constituency: '',
                 loading: false,
-                loadingMessage: ''
+                loadingMessage: '',
+                planningPermItem: null
             }
         },
         methods: {
@@ -93,6 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             handleClick(e) {
                 this.getPostcodeData(e.target.textContent, true);
+            },
+            showPlanningPermDetail(item) {
+                this.planningPermItem = item;
             }
         },
         watch: {
