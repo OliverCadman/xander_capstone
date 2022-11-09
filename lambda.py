@@ -478,10 +478,10 @@ def connect_to_db():
     Connect to database and return the connection and cursor.
     """
     db_conn = pymysql.connect(
-        host='lin-11314-6893-mysql-primary.servers.linodedb.net',
-        user='user_1',
-        password='P0X-5xT-17S~zhW1_pX-60',
-        database='db1',
+        host='<host_url>',
+        user='<db_user>',
+        password='<db_pass>',
+        database='<db_name>',
         ssl={'disable_tls': True}
     )
 
