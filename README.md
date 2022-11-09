@@ -13,6 +13,8 @@ If you don't like the look of a postcode that you searched for, just click on on
 ## Backend
 The project's API was built using Amazon AWS API Gateway, with Lambda Integrations to handle the various third-party API calls. SQL is used to cache data, which was built using SQL workbench.
 
+[Click here to inspect the Lambda code](./lambda.py)
+
 ## Frontend
 VueJS was utilized to build the frontend, along with HTML and SASS (SCSS). It was my first time using VueJS; I understand that my component architecture is non-existent (I built the entire application in one component, using one HTML file). Looking forward to future projects, I will certainly make the effort to follow guidelines and best practices, particularly when it comes to application architecture.
 
