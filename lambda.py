@@ -28,10 +28,8 @@ def lambda_handler(event, context):
 
         Prepare the data into respective dictionaries
         and return to the frontend.
-
-
-
     """
+
     nearest_postcode_list = []
     crime_stats_list = []
     planning_perms_list = []
